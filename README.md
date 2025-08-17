@@ -6,6 +6,12 @@
 Decision Tree と LightGBM を比較してみるサンプルリポジトリです。  
 サンプルデータは車の好みデータ（架空）を使用しています。
 
+精度安定版追加（2025/8/17)
+tree_s_l_f5.py
+- 単一分割(tree_s_l.py)の評価は 分割方法に依存 しやすく、評価が安定しない
+- 5-fold クロスバリデーションを使うと、より安定した推定値 が得られる
+- 標準偏差からはモデルの 精度の安定性 も確認できる
+
 ---
 
 ## 🎯 対象者
@@ -43,7 +49,8 @@ pip install numpy pandas matplotlib scikit-learn lightgbm
 ```
 
 ├─ 1_flow/
-│ └─ tree_s_l.py               # 実行スクリプト
+│ │─ tree_s_l.py                # 実行スクリプト
+│ └─ tree_s_l_f5.py             # 5-fold実行スクリプト
 ├─ 2_data/
 │ └─ sample_car_data.csv       # サンプルデータ
 ├─ 3_output/                   # 決定木出力画像用（自動作成）
