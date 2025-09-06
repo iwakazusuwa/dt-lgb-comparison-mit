@@ -78,6 +78,12 @@ dt_model.fit(X_train, y_train)
 
 y_pred_dt = dt_model.predict(X_test)
 
+# =========================
+# 決定木の可視化 → 全データで学習
+# =========================
+dt_model_all = DecisionTreeClassifier(max_depth=5, random_state=42)
+dt_model_all.fit(X_df, y_enc) 
+
 plt.figure(figsize=(20,10))
 plot_tree(dt_model, filled=True, feature_names=X_df.columns, class_names=class_names)
 plt.title("scikit-learn Decision Tree")
